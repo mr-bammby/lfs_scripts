@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo $LFS=/mnt/lfs
+
+groupadd lfs
+useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+passwd lfs
+chown -v lfs /mnt/lfs/{usr{,/*},lib,var,etc,bin,sbin,tools}
+case $(uname -m) in
+  x86_64) chown -v lfs /mnt/lfs/lib64 ;;
+esac
