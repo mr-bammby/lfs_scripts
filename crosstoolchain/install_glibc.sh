@@ -68,8 +68,7 @@ echo "Configuring..."
     --enable-kernel=5.4 \
     --with-headers=$LFS/usr/include \
     --disable-nscd \
-    libc_cv_slibdir=/usr/lib \
-    --srcdir=$GLIBC_SRC
+    libc_cv_slibdir=/usr/lib
 
 # Compile glibc
 echo "Building..."
@@ -85,3 +84,8 @@ cd -
 sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
 
 echo "Glibc installed successfully"
+
+echo 'int main(){}' | $LFS_TGT-gcc -xc -
+readelf -l a.out | grep ld-linux
+
+rm -v a.out

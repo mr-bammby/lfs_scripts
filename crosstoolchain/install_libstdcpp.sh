@@ -25,6 +25,8 @@ if [ ! -f "$TARBALL" ]; then
     exit 1
 fi
 
+rm -rf  "GCC_DIR"
+
 # Untar the GCC source if the directory doesn't exist
 if [ ! -d "$GCC_DIR" ]; then
     echo "Untarring GCC source..."
@@ -49,11 +51,12 @@ cd "$BUILD_DIR"
     --disable-multilib              \
     --disable-nls                   \
     --disable-libstdcxx-pch         \
-    --with-gxx-include-dir=$LFS/tools/$LFS_TGT/include/c++/14.2.0
+    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/14.2.0
 
 # Build libstdc++
 make
 
 # Install libstdc++
-make install
+make DESTDIR=$LFS install
 
+rm -v $LFS/usr/lib/lib{stdc++{,exp,fs},supc++}.la

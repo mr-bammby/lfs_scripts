@@ -7,7 +7,7 @@
 export LFS=/mnt/lfs
 export LFS_TGT=x86_64-lfs-linux-gnu
 
-set -e
+2set -e
 
 echo "Checking environment variables..."
 if [ -z "$LFS" ]; then
@@ -121,7 +121,6 @@ echo "Running configure for gcc..."
     --disable-libsanitizer \
     --disable-libssp \
     --disable-libvtv \
-    --disable-libcody \
     --enable-languages=c,c++
 
 echo "Compiling the package..."

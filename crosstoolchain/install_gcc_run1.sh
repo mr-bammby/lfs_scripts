@@ -142,3 +142,4 @@ echo "GCC Pass 1 build completed."
 # - Build directory is created as $LFS/sources/gcc-14.2.0/build.
 # - This script follows https://www.linuxfromscratch.org/lfs/view/stable/chapter05/gcc-pass1.html.
 # - To debug, uncomment 'set -x' at the top to trace execution.
+

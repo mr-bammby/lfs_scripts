@@ -38,6 +38,8 @@ else
     exit 1
 fi
 
+rm -rf "BINUTILS_DIR"
+
 if [ ! -d "$BINUTILS_DIR" ]; then
     echo "Extracting binutils-$BINUTILS_VERSION tarball..."
     tar -xf "$BINUTILS_TAR" -C "$LFS/sources"
